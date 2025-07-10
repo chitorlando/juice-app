@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Strawberry",
+        "quantity": 1000,
+        "type": "solid"
+    },
+    {
+        "name": "Banana",
+        "quantity": 1000,
+        "type": "solid"
+    },
+    {
+        "name": "Mango",
+        "quantity": 1000,
+        "type": "solid"
+    },
+    {
+        "name": "Ice",
+        "quantity": 1000,
+        "type": "liquid"
+    },
+    {
+        "name": "Condensed Milk",
+        "quantity": 1000,
+        "type": "liquid"
+    },
+    {
+        "name": "Sugar",
+        "quantity": 500,
+        "type": "solid"
+    }
+]

@@ -1,0 +1,9 @@
+com/formos/test/model/DrinkFlavor.class
+com/formos/test/service/Inventory$1.class
+com/formos/test/App.class
+com/formos/test/dto/IngredientDTO.class
+com/formos/test/model/SolidIngredient.class
+com/formos/test/model/LiquidIngredient.class
+com/formos/test/model/Ingredient.class
+com/formos/test/service/Inventory.class
+com/formos/test/model/Drink.class
