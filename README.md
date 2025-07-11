@@ -4,14 +4,14 @@
 
 ### 💡 Overview
 
-This project is a console-based simulation of a juice stand, created as part of a technical challenge for Formos. It demonstrates **object-oriented design**, use of **inheritance**, **polymorphism**, **composition**, **dynamic pricing**, and **inventory management**, all in Java 18 using Maven.
+This project is a console-based simulation of a juice stand, created as part of a technical challenge for Formos. It demonstra**object-oriented design**, use of **inheritance**, **polymorphism**, **composition**, **dynamic pricing**, and **inventory management**, all in Java 21 usadon.
 
 ### 🧱 Features
 
 - Sell drinks by flavor and size.
-- Create mixed drinks with any two flavors.
+- Create ### mixed drinks with any two flavors.
 - Dynamic pricing based on real ingredient costs.
-- Inventory system with low-ingredient warnings.
+- Invent```ory system with low-ingredient warnings.
 - Structured, maintainable, and testable code.
 - Clean project structure using Maven.
 
@@ -48,7 +48,7 @@ This allows for easy scalability by simply editing the JSON file.
 ### ▶️ How to Run
 
 ```bash
-git clone https://github.com/your-user/formos-juice-stand.git
+git clone https://github.com/chitorlando/formos-juice-stand.git
 cd formos-juice-stand
 mvn compile
 mvn exec:java -Dexec.mainClass="com.formos.test.App"
@@ -64,11 +64,75 @@ src/
 │   └── resources/
 │       └── ingredients.json
 └── test/
+```
 
 ## 🇪🇸 Español
 
 ### 💡 Resumen
 
-Este proyecto es una simulación por consola de un puesto de jugos, desarrollada como parte de una prueba técnica requerida por Formos. Demuestra el uso de **programación orientada a objetos, herencia, polimorfismo, composición, precios dinámicos y gestión de inventario**, todo en Java 18 con Maven.
+Este proyecto es una simulación por consola de un puesto de jugos, desarrollada como parte de una prueba técnica requerida por FormDemuestra el uso de **programación orientada a objetos, herencia, polimorfismo, composición, precios dinámicos y gestión de inventario**, todo en Java 21 usado
 
-###🧱 Funcionalidades
+### 🧱 Funcionalidades
+
+- Venta de jugos por sabor y tamaño.
+- Cr### eación de bebidas mixtas con dos sabores.
+- Precios calculados dinámicamente según los costos de ingredientes.
+- S```istema de inventario con alertas por bajo stock.
+- Código limpio, mantenible y listo para pruebas.
+- Proyecto estructurado con Maven.
+
+### 🧃 Composición de las bebidas
+
+Cada bebida contiene:
+- Una fruta (o dos en bebidas mixtas)
+- Leche condensada
+- Hielo
+- Azúcar
+
+Las cantidades varían según el **tamaño**: Pequeño, Mediano o Grande.
+
+### 💰 Precios y ganancias
+
+Los precios se calculan dinámicamente aplicando un margen de ganancia del **50% sobre el costo real** de los ingredientes. Esto asegura consistencia y rentabilidad.
+
+### 📦 Ingredientes (desde JSON)
+
+Los ingredientes se cargan desde un archivo `ingredients.json`, el cual incluye:
+- Nombre
+- Cantidad
+- Tipo (`solido` o `liquido`)
+- Costo por unidad
+
+Esto permite escalar fácilmente agregando o modificando ingredientes.
+
+### 🛠️ Requisitos
+
+Terminal de línea de comandos
+- Java 21 usado
+- Maven 3.8 o superior
+- Terminal
+
+
+### ▶️ Cómo ejecutar
+```bash
+git clone https://github.com/chitorlando/formos-juice-stand.git
+cd formos-juice-stand
+mvn compile
+mvn exec:java -Dexec.mainClass="com.formos.test.App"
+
+src/
+├── main/
+│   ├── java/
+│   │   └── com.formos.test/
+│   │       ├── model/
+│   │       ├── service/
+│   │       ├── dto/
+│   │       └── App.java
+│   └── resources/
+│       └── ingredients.json
+└── test/
+```
+
+### 👨‍💻 Autor / Author
+## Luis Salazar
+# Ecuador 🇪🇨
