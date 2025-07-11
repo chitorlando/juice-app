@@ -2,8 +2,9 @@ package com.formos.test;
 
 import java.util.Scanner;
 
-import com.formos.test.model.Drink;
 import com.formos.test.model.DrinkFlavor;
+import com.formos.test.model.DrinkSize;
+import com.formos.test.service.DrinkService;
 import com.formos.test.service.Inventory;
 
 /**
@@ -44,18 +45,28 @@ public class App {
                         System.out.print("Enter flavor: ");
                         String inputFlavor = scanner.nextLine().toUpperCase();
 
-                        try {
-                            DrinkFlavor selectedFlavor = DrinkFlavor.valueOf(inputFlavor);
-                            Drink drink = new Drink(selectedFlavor);
+                        System.out.println("\nSelect size:");
+                        for (DrinkSize size : DrinkSize.values()) {
+                            System.out.printf("- %s (%d ml)%n", size.name(), size.getVolumeMl());
+                        }
 
-                            if (drink.make(inventory)) {
-                                System.out.printf("✅ %s drink prepared successfully!%n", selectedFlavor.name());
+                        System.out.print("Enter size: ");
+                        String inputSize = scanner.nextLine().toUpperCase();
+
+                        try {
+                            DrinkSize size = DrinkSize.valueOf(inputSize);
+                            DrinkFlavor selectedFlavor = DrinkFlavor.valueOf(inputFlavor);
+                            Double profit = DrinkService.prepareDrink(selectedFlavor, size, inventory);
+
+                            if (profit != null) {
+                                System.out.printf("✅ %s (%s) drink prepared!%n", selectedFlavor, size.name());
+                                System.out.printf("💰 Price: $%.2f | Profit: $%.2f%n", size.getPrice(), profit);
                                 inventory.warnLowIngredients();
                             } else {
-                                System.out.println("❌ Not enough ingredients to make this drink.");
+                                System.out.println("❌ Not enough ingredients for the drink.");
                             }
                         } catch (IllegalArgumentException e) {
-                            System.out.println("❗ Invalid flavor. Please try again.");
+                            System.out.println("❗ Invalid size selected. Please try again.");
                         }
                         break;
 
@@ -69,20 +80,29 @@ public class App {
                         System.out.print("Enter second flavor: ");
                         String input2 = scanner.nextLine().toUpperCase();
 
+                        System.out.println("\nSelect size:");
+                        for (DrinkSize size : DrinkSize.values()) {
+                            System.out.printf("- %s (%d ml)%n", size.name(), size.getVolumeMl());
+                        }
+                        System.out.print("Enter size: ");
+                        String inputMixSize = scanner.nextLine().toUpperCase();
+
                         try {
                             DrinkFlavor flavor1 = DrinkFlavor.valueOf(input1);
                             DrinkFlavor flavor2 = DrinkFlavor.valueOf(input2);
+                            DrinkSize size = DrinkSize.valueOf(inputMixSize);
+                            Double profit = DrinkService.prepareMixedDrink(flavor1, flavor2, size, inventory);
 
-                            boolean success = makeMixedDrink(flavor1, flavor2, inventory);
-
-                            if (success) {
-                                System.out.printf("✅ %s + %s drink prepared successfully!%n", flavor1, flavor2);
+                            if (profit != null) {
+                                System.out.printf("✅ %s + %s (%s) drink prepared!%n", flavor1, flavor2, size.name());
+                                System.out.printf("💰 Price: $%.2f | Profit: $%.2f%n", size.getPrice(), profit);
                                 inventory.warnLowIngredients();
                             } else {
                                 System.out.println("❌ Not enough ingredients for a mixed drink.");
                             }
+
                         } catch (Exception e) {
-                            System.out.println("❗ One or both flavors are invalid.");
+                            System.out.println("❗ One or both flavors are invalid or invalid size selected, or not enough ingredients.");
                         }
                         break;
 
@@ -97,32 +117,6 @@ public class App {
                 }
             }
         }
-    }
-
-    private static boolean makeMixedDrink(DrinkFlavor f1, DrinkFlavor f2, Inventory inventory) {
-        double fruit1 = f1.getRequiredGrams() / 2.0;
-        double fruit2 = f2.getRequiredGrams() / 2.0;
-        double ice = 90;
-        double milk = 60;
-        double sugar = 24;
-
-        boolean canMake = inventory.hasEnough(f1.getIngredientKey(), fruit1)
-                && inventory.hasEnough(f2.getIngredientKey(), fruit2)
-                && inventory.hasEnough("Ice", ice)
-                && inventory.hasEnough("Condensed Milk", milk)
-                && inventory.hasEnough("Sugar", sugar);
-
-        if (!canMake) {
-            return false;
-        }
-
-        inventory.use(f1.getIngredientKey(), fruit1);
-        inventory.use(f2.getIngredientKey(), fruit2);
-        inventory.use("Ice", ice);
-        inventory.use("Condensed Milk", milk);
-        inventory.use("Sugar", sugar);
-
-        return true;
     }
 
 }

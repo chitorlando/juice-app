@@ -1,39 +1,40 @@
 package com.formos.test.model;
 
+import com.formos.test.service.DrinkCalculator;
 import com.formos.test.service.Inventory;
 
 public class Drink {
 
     private final DrinkFlavor flavor;
+    private final DrinkSize size;
 
-    public Drink(DrinkFlavor flavor) {
+    public Drink(DrinkFlavor flavor, DrinkSize size) {
         this.flavor = flavor;
+        this.size = size;
     }
 
-    public boolean make(Inventory inventory) {
-        double fruit = flavor.getRequiredGrams();
-        double ice = 90; // 90 grams of ice
-        double milk = 150; // 150 ml of milk    
-        double sugar = 24; // 30 grams of sugar
-
-        boolean canMake = inventory.hasEnough(flavor.getIngredientKey(), fruit)
-                && inventory.hasEnough("Ice", ice)
-                && inventory.hasEnough("Condensed Milk", milk)
-                && inventory.hasEnough("Sugar", sugar);
-
-        if (!canMake) {
-            return false;
-        }
-
-        inventory.use(flavor.getIngredientKey(), fruit);
-        inventory.use("Ice", ice);
-        inventory.use("Condensed Milk", milk);
-        inventory.use("Sugar", sugar);
-
-        return true;
+    public double calculateCost(Inventory inventory) {
+        return DrinkCalculator.calculateCost(flavor, size, inventory);
     }
+
+    public double calculateMixedCost(DrinkFlavor f1, DrinkFlavor f2, Inventory inventory) {
+        return DrinkCalculator.calculateMixedCost(f1, f2, size, inventory);
+    }
+
+    public double getPrice() {
+        return size.getPrice();
+    }
+
+    public double getProfit(Inventory inventory) {
+        return getPrice() - calculateCost(inventory);
+    }
+
 
     public String getFlavorName() {
         return flavor.name();
+    }
+
+    public DrinkSize getSize() {
+        return size;
     }
 }

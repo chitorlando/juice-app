@@ -2,31 +2,37 @@
     {
         "name": "Strawberry",
         "quantity": 1000,
-        "type": "solid"
+        "type": "solid",
+        "unitCost": 0.06
     },
     {
         "name": "Banana",
         "quantity": 1000,
-        "type": "solid"
+        "type": "solid",
+        "unitCost": 0.05
     },
     {
         "name": "Mango",
         "quantity": 1000,
-        "type": "solid"
+        "type": "solid",
+        "unitCost": 0.08
     },
     {
         "name": "Ice",
         "quantity": 1000,
-        "type": "liquid"
+        "type": "liquid",
+        "unitCost": 0.004
     },
     {
         "name": "Condensed Milk",
         "quantity": 1000,
-        "type": "liquid"
+        "type": "liquid",
+        "unitCost": 0.03
     },
     {
         "name": "Sugar",
         "quantity": 500,
-        "type": "solid"
+        "type": "solid",
+        "unitCost": 0.006
     }
 ]

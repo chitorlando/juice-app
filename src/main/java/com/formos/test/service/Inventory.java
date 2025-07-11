@@ -27,9 +27,9 @@ public class Inventory {
             for (IngredientDTO dto : ingredientList) {
                 Ingredient ingredient;
                 if (dto.type.equalsIgnoreCase("liquid")) {
-                    ingredient = new LiquidIngredient(dto.name, dto.quantity);
+                    ingredient = new LiquidIngredient(dto.name, dto.quantity, dto.unitCost);
                 } else {
-                    ingredient = new SolidIngredient(dto.name, dto.quantity);
+                    ingredient = new SolidIngredient(dto.name, dto.quantity, dto.unitCost);
                 }
                 ingredients.put(dto.name, ingredient);
             }
