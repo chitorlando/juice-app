@@ -50,7 +50,7 @@ This allows for easy scalability by simply editing the JSON file.
 ```bash
 git clone https://github.com/chitorlando/juice-app.git
 mvn clean compile
-mvn exec:java -Dexec.mainClass="com.formos.test.App"
+mvn clean compile exec:java
 
 src/
 ├── main/
@@ -119,7 +119,7 @@ Terminal de línea de comandos
 ```bash
 git clone https://github.com/chitorlando/juice-app.git
 mvn clean compile
-mvn exec:java -Dexec.mainClass="com.formos.test.App"
+mvn clean compile exec:java
 
 src/
 ├── main/
