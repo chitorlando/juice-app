@@ -1,5 +1,11 @@
 # 🍹 Juice Stand - Technical Challenge (Formos)
 
+## Contact:
+Luis Orlando Salazar Ramos
+xitodx16@gmail.com
+https://github.com/chitorlando/
++593 98 308 0401
+
 ## 🇬🇧 English
 
 ### 💡 Overview
@@ -139,5 +145,6 @@ src/
 ## 👨‍💻 Autor / Author
 ## Luis Salazar
 ## Ecuador 🇪🇨
+
 
 ### Si vez '?' signo en el Menú, no te preocupes, hay emojis aqui, de MacOS.
