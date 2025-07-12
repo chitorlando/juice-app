@@ -65,6 +65,8 @@ src/
 └── test/
 ```
 
+### Si vez '?' signo en el Menú, no te preocupes, hay emojis aqui, de MacOS.
+
 ## 🇪🇸 Español
 
 ### 💡 Resumen
@@ -134,4 +136,4 @@ src/
 ## Luis Salazar
 ## Ecuador 🇪🇨
 
-### If you watch '?' sign at Menu, do not worry, there are emojis here.
+### If you watch '?' sign at Menu, do not worry, there are emojis here., from MacOS.
