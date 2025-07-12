@@ -13,10 +13,19 @@ import com.formos.test.model.Ingredient;
 import com.formos.test.model.LiquidIngredient;
 import com.formos.test.model.SolidIngredient;
 
+/**
+ * Service class for managing ingredient inventory. Loads ingredients from JSON
+ * file and provides methods for checking availability, consuming ingredients,
+ * and monitoring stock levels.
+ */
 public class Inventory {
 
     private Map<String, Ingredient> ingredients = new HashMap<>();
 
+    /**
+     * Constructor that loads ingredients from ingredients.json file. Creates
+     * appropriate ingredient objects based on type (liquid/solid).
+     */
     public Inventory() {
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -24,6 +33,7 @@ public class Inventory {
             List<IngredientDTO> ingredientList = mapper.readValue(inputStream, new TypeReference<List<IngredientDTO>>() {
             });
 
+            // Convert DTOs to appropriate ingredient objects
             for (IngredientDTO dto : ingredientList) {
                 Ingredient ingredient;
                 if (dto.type.equalsIgnoreCase("liquid")) {
@@ -39,20 +49,24 @@ public class Inventory {
         }
     }
 
+    // Checks if there's enough quantity of an ingredient available
     public boolean hasEnough(String name, double required) {
         return ingredients.containsKey(name) && ingredients.get(name).getQuantity() >= required;
     }
 
+    // Consumes ingredients from inventory if available
     public void use(String name, double amount) {
         if (hasEnough(name, amount)) {
             ingredients.get(name).reduce(amount);
         }
     }
 
+    // Retrieves ingredient by name
     public Ingredient get(String name) {
         return ingredients.get(name);
     }
 
+    // Displays current inventory status
     public void printInventory() {
         System.out.println("\n📦 Current Inventory:");
         for (Ingredient i : ingredients.values()) {
@@ -61,6 +75,7 @@ public class Inventory {
         System.out.println();
     }
 
+    // Warns about low ingredient levels based on usage thresholds
     public void warnLowIngredients() {
         System.out.println("\n🔎 Checking for low ingredients...");
 
@@ -69,15 +84,16 @@ public class Inventory {
         for (Ingredient ingredient : ingredients.values()) {
             double threshold;
 
+            // Set thresholds based on ingredient type (enough for ~4 drinks)
             if (ingredient.getName().equalsIgnoreCase("Ice")) {
-                threshold = 360;
+                threshold = 360;        // 90g * 4 drinks
             } else if (ingredient.getName().equalsIgnoreCase("Condensed Milk")) {
-                threshold = 240;
+                threshold = 240;        // 60ml * 4 drinks
             } else if (ingredient.getName().equalsIgnoreCase("Sugar")) {
-                threshold = 96;
+                threshold = 96;         // 24g * 4 drinks
             } else {
-                // fruta: asumimos máximo 210g por bebida × 4
-                threshold = 840;
+                // Fruits: assume max 210g per drink × 4
+                threshold = 840;        // Max fruit usage * 4 drinks
             }
 
             if (ingredient.getQuantity() < threshold) {
@@ -91,5 +107,4 @@ public class Inventory {
             System.out.println("✅ All ingredients are above safe thresholds.");
         }
     }
-
 }

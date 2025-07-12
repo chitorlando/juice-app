@@ -9,9 +9,9 @@ This project is a console-based simulation of a juice stand, created as part of 
 ### 🧱 Features
 
 - Sell drinks by flavor and size.
-- Create ### mixed drinks with any two flavors.
+- Create mixed drinks with any two flavors.
 - Dynamic pricing based on real ingredient costs.
-- Invent```ory system with low-ingredient warnings.
+- Inventory system with low-ingredient warnings.
 - Structured, maintainable, and testable code.
 - Clean project structure using Maven.
 
@@ -48,9 +48,9 @@ This allows for easy scalability by simply editing the JSON file.
 ### ▶️ How to Run
 
 ```bash
-git clone https://github.com/chitorlando/formos-juice-stand.git
+git clone https://github.com/chitorlando/juice-app.git
 cd formos-juice-stand
-mvn compile
+mvn clean compile
 mvn exec:java -Dexec.mainClass="com.formos.test.App"
 
 src/
@@ -108,16 +108,15 @@ Esto permite escalar fácilmente agregando o modificando ingredientes.
 ### 🛠️ Requisitos
 
 Terminal de línea de comandos
-- Java 21 usado
+- Java 17+
 - Maven 3.8 o superior
 - Terminal
 
-
 ### ▶️ Cómo ejecutar
 ```bash
-git clone https://github.com/chitorlando/formos-juice-stand.git
+git clone https://github.com/chitorlando/juice-app.git
 cd formos-juice-stand
-mvn compile
+mvn clean compile
 mvn exec:java -Dexec.mainClass="com.formos.test.App"
 
 src/
@@ -133,6 +132,6 @@ src/
 └── test/
 ```
 
-### 👨‍💻 Autor / Author
+## 👨‍💻 Autor / Author
 ## Luis Salazar
-# Ecuador 🇪🇨
+## Ecuador 🇪🇨
