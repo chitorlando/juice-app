@@ -18,13 +18,12 @@ public class DrinkService {
      */
     public static Double prepareDrink(DrinkFlavor flavor, DrinkSize size, Inventory inventory) {
         double volume = size.getVolumeMl();
-        double multiplier = size.getMultiplier();
 
         // Calculate required quantities
-        double fruit = flavor.getRequiredGramsForVolume(volume);
-        double iceQty = 90 * multiplier;        // 90g of ice, adjusted for size
-        double cMilkQty = 60 * multiplier;      // 60ml of condensed milk, adjusted for size
-        double sugarQty = 24 * multiplier;      // 24g of sugar, adjusted for size
+        double fruit = flavor.getRequiredGramsForJuiceVolume(volume); // 50% of volume, converted to grams
+        double iceQty = 30 * (volume / 100.0);      // 30ml per 100ml
+        double cMilkQty = 20 * (volume / 100.0);    // 20ml per 100ml
+        double sugarQty = 8 * (volume / 100.0);     // 8g per 100ml
 
         // Check if all ingredients are available
         boolean canMake = inventory.hasEnough(flavor.getIngredientKey(), fruit)
@@ -57,14 +56,13 @@ public class DrinkService {
      */
     public static Double prepareMixedDrink(DrinkFlavor f1, DrinkFlavor f2, DrinkSize size, Inventory inventory) {
         double volume = size.getVolumeMl();
-        double multiplier = size.getMultiplier();
 
         // Each fruit uses half the volume for mixed drinks
-        double fruit1 = f1.getRequiredGramsForVolume(volume / 2.0);
-        double fruit2 = f2.getRequiredGramsForVolume(volume / 2.0);
-        double iceQty = 90 * multiplier;        // 90g of ice, adjusted for size
-        double cMilkQty = 60 * multiplier;      // 60ml of condensed milk, adjusted for size
-        double sugarQty = 24 * multiplier;      // 24g of sugar, adjusted for size
+        double fruit1 = f1.getRequiredGramsForJuiceVolume(volume / 2.0);
+        double fruit2 = f2.getRequiredGramsForJuiceVolume(volume / 2.0);
+        double iceQty = 30 * (volume / 100.0);
+        double cMilkQty = 20 * (volume / 100.0);
+        double sugarQty = 8 * (volume / 100.0);
 
         // Check if all ingredients are available
         boolean canMake = inventory.hasEnough(f1.getIngredientKey(), fruit1)

@@ -42,14 +42,13 @@ This allows for easy scalability by simply editing the JSON file.
 ### 🛠️ Requirements
 
 - Java 17+
-- Maven 3.8+
+- Maven 3+
 - Terminal
 
 ### ▶️ How to Run
 
 ```bash
 git clone https://github.com/chitorlando/juice-app.git
-cd formos-juice-stand
 mvn clean compile
 mvn exec:java -Dexec.mainClass="com.formos.test.App"
 
@@ -115,7 +114,6 @@ Terminal de línea de comandos
 ### ▶️ Cómo ejecutar
 ```bash
 git clone https://github.com/chitorlando/juice-app.git
-cd formos-juice-stand
 mvn clean compile
 mvn exec:java -Dexec.mainClass="com.formos.test.App"
 
@@ -135,3 +133,5 @@ src/
 ## 👨‍💻 Autor / Author
 ## Luis Salazar
 ## Ecuador 🇪🇨
+
+### If you watch '?' sign at Menu, do not worry, there are emojis here.

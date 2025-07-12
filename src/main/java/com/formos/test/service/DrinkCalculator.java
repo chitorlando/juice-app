@@ -19,17 +19,16 @@ public class DrinkCalculator {
 
     /**
      * Calculates the total cost of a single-flavor drink. Uses standard recipe:
-     * fruit + ice + condensed milk + sugar.
+     * fruit (50% of volume) + ice + condensed milk + sugar.
      */
     public static double calculateCost(DrinkFlavor flavor, DrinkSize size, Inventory inventory) {
         double volume = size.getVolumeMl();
-        double multiplier = size.getMultiplier();
 
         // Calculate ingredient quantities based on size
-        double fruit = flavor.getRequiredGramsForVolume(volume);
-        double ice = 90 * multiplier;           // 90g base amount
-        double milk = 60 * multiplier;          // 60ml base amount
-        double sugar = 24 * multiplier;         // 24g base amount
+        double fruit = flavor.getRequiredGramsForJuiceVolume(volume);
+        double ice = 30 * (volume / 100.0);      // 30ml per 100ml drink
+        double milk = 20 * (volume / 100.0);     // 20ml per 100ml drink
+        double sugar = 8 * (volume / 100.0);     // 8g per 100ml drink
 
         return ingredientCost(flavor.getIngredientKey(), fruit, inventory)
                 + ingredientCost("Ice", ice, inventory)
@@ -43,14 +42,13 @@ public class DrinkCalculator {
      */
     public static double calculateMixedCost(DrinkFlavor f1, DrinkFlavor f2, DrinkSize size, Inventory inventory) {
         double volume = size.getVolumeMl();
-        double multiplier = size.getMultiplier();
 
         // Each fruit uses half the volume for mixed drinks
-        double fruit1 = f1.getRequiredGramsForVolume(volume / 2.0);
-        double fruit2 = f2.getRequiredGramsForVolume(volume / 2.0);
-        double ice = 90 * multiplier;           // Same base ingredients
-        double milk = 60 * multiplier;
-        double sugar = 24 * multiplier;
+        double fruit1 = f1.getRequiredGramsForJuiceVolume(volume / 2.0);
+        double fruit2 = f2.getRequiredGramsForJuiceVolume(volume / 2.0);
+        double ice = 30 * (volume / 100.0);
+        double milk = 20 * (volume / 100.0);
+        double sugar = 8 * (volume / 100.0);
 
         return ingredientCost(f1.getIngredientKey(), fruit1, inventory)
                 + ingredientCost(f2.getIngredientKey(), fruit2, inventory)
