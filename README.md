@@ -84,9 +84,9 @@ Este proyecto es una simulación por consola de un puesto de jugos, desarrollada
 ### 🧱 Funcionalidades
 
 - Venta de jugos por sabor y tamaño.
-- Cr### eación de bebidas mixtas con dos sabores.
+- Creación de bebidas mixtas con dos sabores.
 - Precios calculados dinámicamente según los costos de ingredientes.
-- S```istema de inventario con alertas por bajo stock.
+- Sistema de inventario con alertas por bajo stock.
 - Código limpio, mantenible y listo para pruebas.
 - Proyecto estructurado con Maven.
 
